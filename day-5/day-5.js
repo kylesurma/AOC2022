@@ -19,7 +19,7 @@ const runMoves = (moves, isOneCrateAtATime = false) => {
     }
 }
 // grab all crates at the same time
-console.log(runMoves(moves, false))
+//    console.log(runMoves(moves, false))
 // grab one crate at a time
-console.log(runMoves(moves, true))
+//    console.log(runMoves(moves, true))
 
