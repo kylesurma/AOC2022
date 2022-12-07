@@ -1,6 +1,6 @@
 const data = require("./data");
 
-const findCommonLetter = (str) => {
+const findCommonLetterOfString = (str) => {
   const mid = Math.ceil(str.length / 2);
   const memo = {};
   for (let i = 0; i < str.length; i++) {
@@ -11,6 +11,7 @@ const findCommonLetter = (str) => {
 };
 
 const findCommonLetterOfStrings = (...args) => {
+  if (args.length === 1) return findCommonLetterOfString(...args)
   const memo = {};
   const lastWord = args.pop();
   args.forEach(str => {
@@ -30,12 +31,6 @@ const findValueOfLetter = (letter) => {
   return charCode - (charCode > 96 ? 96 : 38);
 };
 
-const addUpPriorities = (arrayOfStrings) =>
-  arrayOfStrings.reduce(
-    (total, str) => total + +findValueOfLetter(findCommonLetter(str)),
-    0
-  );
-
 const priorityCalc = (arrayOfStrings, numberOfStr) => {
   if (!arrayOfStrings.length) return 0;
   return (
@@ -46,7 +41,7 @@ const priorityCalc = (arrayOfStrings, numberOfStr) => {
 };
 
 // for split single string
-console.log(addUpPriorities(data));
+console.log(priorityCalc([...data], 1));
 
 // for common letter amongst 3 words (written to support n amount)
-console.log(priorityCalc(data, 3));
+console.log(priorityCalc([...data], 3));
